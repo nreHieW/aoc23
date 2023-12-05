@@ -32,3 +32,8 @@ Tried to use Nom to parse. Use `impl` and `struct`
 Learnt about borrowing in Rust: Cannot edit something that is being iterated over.
 Can use HashSet rather than vec so we can take advantage of intersection and FoldMany rather than separatedlist
 Can use tuple parsers in Nom.
+
+#### Day 5 
+Rather than use chunks can straight away use separated pair from Nom
+Use release mode 
+When using progress bar, good to flatmap out everything so that it is easier to view.
