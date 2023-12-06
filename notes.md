@@ -37,3 +37,7 @@ Can use tuple parsers in Nom.
 Rather than use chunks can straight away use separated pair from Nom
 Use release mode 
 When using progress bar, good to flatmap out everything so that it is easier to view.
+
+
+#### Day 6
+Getting better with iterators and nom parsing
