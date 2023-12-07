@@ -22,7 +22,6 @@ impl Game { // implement some functionality
 Use [nom](https://docs.rs/nom) to iteratively bottom up parse the input string.
 Treemap has a deterministic iteration output as compared to HashMap.
 
-
 #### Day 3
 Can use LocatedSpan to parse
 Dont need to dfs can just check since the border positions are deterministic. 
@@ -38,6 +37,10 @@ Rather than use chunks can straight away use separated pair from Nom
 Use release mode 
 When using progress bar, good to flatmap out everything so that it is easier to view.
 
-
 #### Day 6
 Getting better with iterators and nom parsing
+
+#### Day 7 
+A little bit of trial and error with Nom but improving 
+Ordering is equivalent to CompareTo
+`*char_map.entry(largest_key).or_insert(0) += num_jokers;` mutable editing of HashMap
