@@ -41,6 +41,12 @@ When using progress bar, good to flatmap out everything so that it is easier to 
 Getting better with iterators and nom parsing
 
 #### Day 7 
-A little bit of trial and error with Nom but improving 
+A little bit of trial and error with Nom but improving. Can just use normal `lines()` in the future.
 Ordering is equivalent to CompareTo
 `*char_map.entry(largest_key).or_insert(0) += num_jokers;` mutable editing of HashMap
+Can use Enums
+
+#### Day 8
+Improving at parsing. 
+Used `any` and `loop`
+
