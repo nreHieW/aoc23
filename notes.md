@@ -47,6 +47,9 @@ Ordering is equivalent to CompareTo
 Can use Enums
 
 #### Day 8
-Improving at parsing. 
-Used `any` and `loop`
+Improving at parsing and used `any` and `loop`
+Can use `cycle()` for infinite
 
+
+#### Day 9
+`Map` is lazy so need to be careful when reverse iterating with state
