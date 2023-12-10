@@ -50,6 +50,8 @@ Can use Enums
 Improving at parsing and used `any` and `loop`
 Can use `cycle()` for infinite
 
-
 #### Day 9
 `Map` is lazy so need to be careful when reverse iterating with state
+
+#### Day 10
+Had to use the winding rule. Hardest day so far. Code is a monstrosity. 
