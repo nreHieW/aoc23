@@ -55,3 +55,19 @@ Can use `cycle()` for infinite
 
 #### Day 10
 Had to use the winding rule. Hardest day so far. Code is a monstrosity. 
+
+#### Day 11
+`Range<i64>` does not have length so just find the start and end
+
+#### Day 12
+Can use `itertools::permutations`
+Hard day with the dynamic programming. Credits to [this](https://github.com/mfornet/advent-of-code-2023/blob/main/src/bin/12.rs) for the help.
+
+#### Day 13
+Pretty annoying day with many edge cases but brute force works
+
+#### Day 14
+Try to always think of the simpler way rather than the 
+
+#### Day 15 
+More straightforward day. `&mut` to get mutable reference

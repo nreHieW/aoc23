@@ -16,3 +16,4 @@ Cargo.toml
 
 /inputs
 *.txt
+/.vscode
