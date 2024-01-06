@@ -67,7 +67,14 @@ Hard day with the dynamic programming. Credits to [this](https://github.com/mfor
 Pretty annoying day with many edge cases but brute force works
 
 #### Day 14
-Try to always think of the simpler way rather than the 
+Try to always think of the simpler way rather than the efficient way
 
 #### Day 15 
 More straightforward day. `&mut` to get mutable reference
+
+#### Day 16
+Difficult day especially after the long break from holidays. Use the state trick. Not the most efficient or fast
+
+#### Day 17
+Rusty on Dijkstra but need to start learning to model things as State and not just location on a grid.
+Remember that a `PriorityQueue` has `push` and `push_increase` courtesy of [this](https://www.reddit.com/r/adventofcode/comments/18zd7mz/2023_day_17_part_1rust_help_with_day_17_part_1/)
