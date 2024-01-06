@@ -78,3 +78,7 @@ Difficult day especially after the long break from holidays. Use the state trick
 #### Day 17
 Rusty on Dijkstra but need to start learning to model things as State and not just location on a grid.
 Remember that a `PriorityQueue` has `push` and `push_increase` courtesy of [this](https://www.reddit.com/r/adventofcode/comments/18zd7mz/2023_day_17_part_1rust_help_with_day_17_part_1/)
+
+#### Day 18
+Tried winding rule originally but that does not work since some points might coincide nicely with an edge. 
+Need to use [Shoelace Formula](https://en.wikipedia.org/wiki/Shoelace_formula) and [Pick's Theorem](https://en.wikipedia.org/wiki/Pick's_theorem). Thing to note is that Shoelace Formula gives the area and NOT the number of interior points. 
