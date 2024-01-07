@@ -82,3 +82,15 @@ Remember that a `PriorityQueue` has `push` and `push_increase` courtesy of [this
 #### Day 18
 Tried winding rule originally but that does not work since some points might coincide nicely with an edge. 
 Need to use [Shoelace Formula](https://en.wikipedia.org/wiki/Shoelace_formula) and [Pick's Theorem](https://en.wikipedia.org/wiki/Pick's_theorem). Thing to note is that Shoelace Formula gives the area and NOT the number of interior points. 
+
+#### Day 19
+Closures in rust are basically lambda functions. Quite happy with my part 2 States solution. 
+Some things to note:
+- Can use `Ord`
+- labelled loop break
+
+#### Day 20
+Part 1 was abit messy but had to rely on the LCM 4 different sets insight online to solve. Learnt about some 'OOP' support in Rust.
+
+#### Day 21
+Mathy day. Euclidean reminder is always a non-negative number whereas with regular division sign of the reminder depends on the sign of the dividend.
