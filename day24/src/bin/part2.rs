@@ -1,5 +1,5 @@
 use core::panic;
-use std::fmt;
+use std::{collections::HashMap, fmt};
 #[derive(Clone, Copy, PartialEq, Eq, Hash)]
 struct Hail {
     initial_pos: (i64, i64, i64),
@@ -57,10 +57,10 @@ fn solve_linear_alg(hails: &Vec<Hail>) -> String {
     //     .unwrap();
     // min_vel = min_vel.min(-1 * max_vel);
     // max_vel = max_vel.max(-1 * min_vel);
-    let min_vel = -250;
-    let max_vel = 250;
-    let mut res = Vec::new();
+    let min_vel = -200;
+    let max_vel = 200;
 
+    let mut possible_solutions = HashMap::new();
     for i in min_vel..=max_vel {
         for j in min_vel..=max_vel {
             let adj = (i, j);
@@ -74,27 +74,39 @@ fn solve_linear_alg(hails: &Vec<Hail>) -> String {
                     z_velocity: x.z_velocity,
                 })
                 .collect::<Vec<Hail>>();
+
+            // Optimization taken from https://www.reddit.com/r/adventofcode/comments/18pnycy/comment/ker0hj8/?utm_source=share&utm_medium=web2x&context=3
+            let first = adjusted_hails[0].clone();
+            let first_check = adjusted_hails
+                .iter()
+                .skip(1)
+                .all(|x| find_intersection(first, *x).is_some());
+
+            if !first_check {
+                continue;
+            }
             let hail_pairs = adjusted_hails.iter().combinations(2);
             let intersections = hail_pairs
                 .filter_map(|x| find_intersection(x[0].clone(), x[1].clone()))
                 .collect::<Vec<(f64, f64)>>();
-
-            // since this is a float, we just fold and check if the difference in values is less than some epsilon
-            let eps = 0.00001;
-            if intersections.iter().fold(true, |acc, x| {
-                acc && (x.0 - intersections[0].0).abs() < eps
-                    && (x.1 - intersections[0].1).abs() < eps
-            }) {
-                res.push((adj, intersections[0]));
-            }
+            let biggest_x_diff = intersections
+                .iter()
+                .map(|x| (x.0 - intersections[0].0).abs())
+                .fold(0.0, |acc, x| f64::max(acc, x));
+            let biggest_y_diff = intersections
+                .iter()
+                .map(|x| (x.1 - intersections[0].1).abs())
+                .fold(0.0, |acc, x| f64::max(acc, x));
+            possible_solutions.insert(
+                (biggest_x_diff + biggest_y_diff) as i64,
+                (adj, intersections[0]),
+            );
         }
     }
-    if res.len() != 1 {
-        panic!("Expected 1 result, got {}", res.len());
-    }
-    let (x, y) = res[0].1;
-    let (direction_x, direction_y) = (res[0].0 .0 * -1, res[0].0 .1 * -1);
-
+    let smallest_key = possible_solutions.keys().min().unwrap();
+    let (adj, intersection) = possible_solutions.get(smallest_key).unwrap();
+    let (x, y) = intersection.clone();
+    let (direction_x, direction_y) = (adj.0 as i64 * -1, adj.1 as i64 * -1);
     let mut z: Option<i64> = None;
     for item in hails.windows(2) {
         let first_hail = item[0];
@@ -127,12 +139,15 @@ fn solve_linear_alg(hails: &Vec<Hail>) -> String {
             panic!("t = {}, check t = {}", t1, check_t1);
         }
         let pz_t1qz = second_hail.initial_pos.2 + t1 * second_hail.z_velocity;
+        if t1 == t {
+            continue;
+        }
         let qz = (pz_tqz - pz_t1qz) / (t - t1);
         z = Some(pz_tqz - t * qz);
         break;
     }
     if z.is_none() {
-        panic!("No soluction found");
+        panic!("No solution found");
     }
     (x as i64 + y as i64 + z.unwrap()).to_string()
 }
