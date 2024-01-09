@@ -17,3 +17,4 @@ Cargo.toml
 /inputs
 *.txt
 /.vscode
+day24/.z3-trace

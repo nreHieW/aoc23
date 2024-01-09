@@ -94,3 +94,17 @@ Part 1 was abit messy but had to rely on the LCM 4 different sets insight online
 
 #### Day 21
 Mathy day. Euclidean reminder is always a non-negative number whereas with regular division sign of the reminder depends on the sign of the dividend.
+
+#### Day 22 
+More straightforward but the implementation is messy.
+
+#### Day 23
+Can just brute force dfs all paths. Visited is only on the current path so the path serves as the state.
+For part 2, treat as a weighted DAG since some cells only have one direction.
+
+#### Day 24
+Reference Stack Overflow for part1. Part 2 I learnt to use the Z3 solver. Compilation, build and run times were very slow on my machine so not sure if it is an Apple Silicon issue.
+
+To use the z solver solution: add `z3 = { version = "0.12", git="https://github.com/prove-rs/z3.rs.git", features = ["static-link-z3"]}` to `Cargo.toml`
+
+The linear algebra solution works because we can frame the rock as standing still and applying a delta vector to each of the hailstones instead. It is inspired from [this video](https://www.youtube.com/watch?v=nP2ahZs40U8&t=425s) and this [comment](https://www.reddit.com/r/adventofcode/comments/18pnycy/comment/keq7g67/?utm_source=share&utm_medium=web2x&context=3)
