@@ -108,3 +108,15 @@ Reference Stack Overflow for part1. Part 2 I learnt to use the Z3 solver. Compil
 To use the z solver solution: add `z3 = { version = "0.12", git="https://github.com/prove-rs/z3.rs.git", features = ["static-link-z3"]}` to `Cargo.toml`
 
 The linear algebra solution works because we can frame the rock as standing still and applying a delta vector to each of the hailstones instead. It is inspired from [this video](https://www.youtube.com/watch?v=nP2ahZs40U8&t=425s) and this [comment](https://www.reddit.com/r/adventofcode/comments/18pnycy/comment/keq7g67/?utm_source=share&utm_medium=web2x&context=3)
+
+Some notes about the linear algebra solution:
+- Rust cannot natively compare floats
+- The code currently had rounding errors which might (?) be due to how rust treats numbers 
+- When printing all solutions, the correct solution for my input has the smallest variance across all other possible solutions: `Found a possible solution: (-154, -75), largest x : 10, largest y 15.5625`
+- Given that the other differences are large integer numbers, I decided to just cast this to `i64` and use a hashmap to keep track of all possible solutions.
+- The final solutions is ultimately the smallest difference.
+
+The working theory that I have as to why this is the case is that all interesection (x, y) coordinates are casted as `f64`. However, if I print the actual intersections, they are either the above case or very large 10+ digit numbers with a single decimal point. Floats are stored 64 bit IEEE 754, with a exponent of 11 bits. This means they can store up to a maximum value of roughly 2^11 which overflows the actual values of the intersection. 
+
+#### Day 25
+Cannot use Tarjans for an undirected graph because it is just a single connected component. Works if we just use the top 3 most used nodes. Seems like something like [this](https://docs.rs/rustworkx-core/0.13.2/rustworkx_core/connectivity/fn.stoer_wagner_min_cut.html) works as well.
